@@ -1,5 +1,5 @@
 {
-    "name": "marti/hurivan-base-req",
+    "name": "hurican/baserequire",
     "type": "library",
     "version": "1.0.0",
     "require": {

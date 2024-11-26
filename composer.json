@@ -8,7 +8,11 @@
     "license": "proprietary",
     "autoload": {
         "psr-4": {
-            "Marti\\HurivanBaseReq\\": "src/"
+            "Marti\\HurivanBaseReq\\": "src/",
+            "Req\\": "src/Req/",
+            "Res\\":"src/Res/",
+            "BaseReq\\":"src/BaseReq",
+            "CookieHandler\\":"src/CookieHandler"   
         }
     },
     "scripts": {
@@ -17,11 +21,11 @@
         ]
     },
     "repositories": [
-    {
-        "type": "vcs",
-        "url": "https://github.com/martinkovacs22/hurivanBaseReq.git"
-    }
-],
+        {
+            "type": "vcs",
+            "url": "https://github.com/martinkovacs22/hurivanBaseReq.git"
+        }
+    ],
     "authors": [
         {
             "name": "Martin Kovács",

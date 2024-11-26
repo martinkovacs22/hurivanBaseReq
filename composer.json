@@ -1,6 +1,7 @@
 {
     "name": "marti/hurivan-base-req",
     "type": "library",
+    "version": "1.0.0",
     "require": {
         "firebase/php-jwt": "^6.10"
     },

@@ -15,6 +15,12 @@
             "php scripts/addVendor.php"
         ]
     },
+    "repositories": [
+    {
+        "type": "vcs",
+        "url": "https://github.com/martinkovacs22/hurivanBaseReq.git"
+    }
+],
     "authors": [
         {
             "name": "Martin Kovács",

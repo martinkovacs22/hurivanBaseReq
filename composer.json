@@ -1,0 +1,24 @@
+{
+    "name": "marti/hurivan-base-req",
+    "type": "library",
+    "require": {
+        "firebase/php-jwt": "^6.10"
+    },
+    "license": "proprietary",
+    "autoload": {
+        "psr-4": {
+            "Marti\\HurivanBaseReq\\": "src/"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "php scripts/addVendor.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Martin Kovács",
+            "email": "martinkovacs22@gmail.com"
+        }
+    ]
+}

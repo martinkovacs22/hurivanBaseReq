@@ -16,7 +16,7 @@ abstract class BaseReq{
     
     private array | null $header;
 
-    private array | null $cookieHandler;
+    private CookieHandler $cookieHandler;
     /**
      * Get the value of body
      */ 

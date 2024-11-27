@@ -12,7 +12,8 @@
             "Req\\": "src/Req/",
             "Res\\":"src/Res/",
             "BaseReq\\":"src/BaseReq",
-            "CookieHandler\\":"src/CookieHandler"   
+            "CookieHandler\\":"src/CookieHandler",
+            "ReturnValue\\":"src/ReturnValue"   
         }
     },
     "scripts": {

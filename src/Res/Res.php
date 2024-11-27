@@ -52,12 +52,3 @@ class Res extends BaseReq
         exit();
     }
 }
-
-$req = Req::getInc();
-
-
-$res = Res::getInc();
-$res->setJwt("dsadsadsa");
-$res->setBody(ReturnValue::createReturnArray(true,["err"=>true,"data"=>["record"=>["1","2"]]]));
-$res->setSqlError(ReturnValue::SQLError(true));
-$res->build();

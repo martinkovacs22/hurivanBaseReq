@@ -9,12 +9,15 @@ use CookieHandler\CookieHandler;
 class Req extends BaseReq{
     
     public function __construct() {
+        if (getallheaders()["token"]) {
+            self::setJwt(getallheaders()["token"]);
+        }
+        self::setHeader(getallheaders());
         if (!empty($input)) {
             $decodedInput = json_decode($input, true);
             if (json_last_error() === JSON_ERROR_NONE) {
                 $this->setBody($decodedInput);
             } else {
-                // Hibakezel�s JSON dek�dol�skor
                 $this->setBody([]);
             }
         } else {

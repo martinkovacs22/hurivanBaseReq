@@ -4,25 +4,31 @@ namespace BaseReq;
 
 require_once __DIR__."/../autoloader.php";
 
+use HTTP_STATUS\HTTP_STATUS;
 use CookieHandler\CookieHandler;
 
 abstract class BaseReq{
 
-    private array|null $body;
+    private static string|null $jwt;
 
-    private string | null $method;
+    private static array|null $body;
 
-    private string | null $fun;
+    private static int  $httpstatus;
+
+    private static string | null $method;
+
+    private static string | null $fun;
     
-    private array | null $header;
+    private static array | null $header;
 
-    private CookieHandler $cookieHandler;
+    private static string|array|null $sqlError;
+    private static CookieHandler $cookieHandler;
     /**
      * Get the value of body
      */ 
-    public function getBody()
+    public static function getBody()
     {
-        return $this->body;
+        return self::$body;
     }
 
     /**
@@ -30,19 +36,19 @@ abstract class BaseReq{
      *
      * @return  self
      */ 
-    public function setBody($body)
+    public static function setBody($body): array|null
     {
-        $this->body = $body;
+        self::$body = $body;
 
-        return $this;
+        return self::getBody();
     }
 
     /**
      * Get the value of method
      */ 
-    public function getMethod()
+    public static function getMethod(): string|null
     {
-        return $this->method;
+        return self::$method;
     }
 
     /**
@@ -50,19 +56,19 @@ abstract class BaseReq{
      *
      * @return  self
      */ 
-    public function setMethod($method)
+    public static function setMethod($method): string|null
     {
-        $this->method = $method;
+        self::$method = $method;
 
-        return $this;
+        return self::getMethod();
     }
 
     /**
      * Get the value of fun
      */ 
-    public function getFun()
+    public static function getFun():string | null
     {
-        return $this->fun;
+        return self::getFun();
     }
 
     /**
@@ -70,19 +76,19 @@ abstract class BaseReq{
      *
      * @return  self
      */ 
-    public function setFun($fun)
+    public static function setFun($fun): string|null
     {
-        $this->fun = $fun;
+        self::$fun = $fun;
 
-        return $this;
+        return self::getFun();
     }
 
     /**
      * Get the value of header
      */ 
-    public function getHeader()
+    public static function getHeader(): array|null
     {
-        return $this->header;
+        return self::$header;
     }
 
     /**
@@ -90,19 +96,19 @@ abstract class BaseReq{
      *
      * @return  self
      */ 
-    public function setHeader($header)
+    public static function setHeader($header): array|null
     {
-        $this->header = $header;
+        self::$header = $header;
 
-        return $this;
+        return self::getHeader();
     }
 
     /**
      * Get the value of cookieHandler
      */ 
-    public function getCookieHandler()
+    public static function getCookieHandler(): CookieHandler
     {
-        return $this->cookieHandler;
+        return self::$cookieHandler;
     }
 
     /**
@@ -110,11 +116,71 @@ abstract class BaseReq{
      *
      * @return  self
      */ 
-    public function setCookieHandler($cookieHandler)
+    public static function setCookieHandler($cookieHandler): CookieHandler
     {
-        $this->cookieHandler = $cookieHandler;
+        self::$cookieHandler = $cookieHandler;
 
-        return $this;
+        return self::getCookieHandler();
+    }
+
+    /**
+     * Get the value of httpstatus
+     */ 
+    public static function getHttpstatus():int
+    {
+        return self::$httpstatus;
+    }
+
+    /**
+     * Set the value of httpstatus
+     *
+     * @return  self
+     */ 
+    public static function setHttpstatus(int $httpstatus): int
+    {
+        self::$httpstatus = HTTP_STATUS::getStatus($httpstatus);
+
+        return self::getHttpstatus();
+    }
+
+    /**
+     * Get the value of jwt
+     */ 
+    public static function getJwt(): string|null
+    {
+        return self::$jwt;
+    }
+
+    /**
+     * Set the value of jwt
+     *
+     * @return  self
+     */ 
+    public static function setJwt($jwt): string|null
+    {
+        self::$jwt = $jwt;
+
+        return self::$jwt;
+    }
+
+    /**
+     * Get the value of sqlError
+     */ 
+    public static function getSqlError()
+    {
+        return self::$sqlError;
+    }
+
+    /**
+     * Set the value of sqlError
+     *
+     * @return  self
+     */ 
+    public static function setSqlError($sqlError)
+    {
+        self::$sqlError = $sqlError;
+
+        return self::$sqlError;
     }
 }
 

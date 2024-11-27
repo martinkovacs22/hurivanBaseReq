@@ -8,7 +8,7 @@ use BaseReq\BaseReq;
 use CookieHandler\CookieHandler;
 use HTTP_STATUS\HTTP_STATUS;
 use ReturnValue\ReturnValue;
-
+use Req\Req;
 class Res extends BaseReq
 {
 
@@ -19,7 +19,7 @@ class Res extends BaseReq
     public static function getInc(): Res|null
     {
 
-        if (isset(self::$inc)) {
+        if (empty(self::$inc)) {
             self::$inc = new Res();
         }
         return self::$inc;
@@ -37,15 +37,27 @@ class Res extends BaseReq
         foreach (self::getCookieHandler()->getArrayOfCookie() as $key => $value) {
             $_COOKIE[$key] = $value;
         }
-        $jwt = is_string(self::getJwt()) ? self::getJwt() : "";
-        echo json_encode(ReturnValue::createReturnArray(
-            false,
-            self::getBody(),
-            $jwt,
-            (is_string(self::getSqlError()) || is_array(self::getSqlError()))
-        ));
+        
+        
+        //print_r(Res::getBody()["sql"]);
+
+        if (empty(Res::getBody()["sql"])) {
+            $newBody = Res::getBody();
+            $newBody["sql"] = Res::getSqlError();
+            Res::setBody($newBody);
+        }
+        echo json_encode(Res::getBody());
         $code = self::getHttpstatus();
         http_response_code($code);
         exit();
     }
 }
+
+$req = Req::getInc();
+
+
+$res = Res::getInc();
+$res->setJwt("dsadsadsa");
+$res->setBody(ReturnValue::createReturnArray(true,["err"=>true,"data"=>["record"=>["1","2"]]]));
+$res->setSqlError(ReturnValue::SQLError(true));
+$res->build();

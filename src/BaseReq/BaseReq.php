@@ -9,19 +9,19 @@ use CookieHandler\CookieHandler;
 
 abstract class BaseReq{
 
-    private static string|null $jwt;
+    private static string|null $jwt = "";
 
-    private static array|null $body;
+    private static array|null $body = [];
 
-    private static int  $httpstatus;
+    private static int  $httpstatus = 200;
 
-    private static string | null $method;
+    private static string | null $method = "";
 
-    private static string | null $fun;
+    private static string | null $fun ="";
     
-    private static array | null $header;
+    private static array | null $header =[];
 
-    private static string|array|null $sqlError;
+    private static string|array|null $sqlError = null;
     private static CookieHandler $cookieHandler;
     /**
      * Get the value of body
@@ -66,10 +66,7 @@ abstract class BaseReq{
     /**
      * Get the value of fun
      */ 
-    public static function getFun():string | null
-    {
-        return self::getFun();
-    }
+
 
     /**
      * Set the value of fun
@@ -176,11 +173,19 @@ abstract class BaseReq{
      *
      * @return  self
      */ 
-    public static function setSqlError($sqlError)
+    public static function setSqlError($sqlError): array|string|null
     {
         self::$sqlError = $sqlError;
 
         return self::$sqlError;
+    }
+
+    /**
+     * Get the value of fun
+     */ 
+    public static function getFun()
+    {
+        return self::$fun;
     }
 }
 

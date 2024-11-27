@@ -11,6 +11,7 @@
             "Marti\\HurivanBaseReq\\": "src/",
             "Req\\": "src/Req/",
             "Res\\":"src/Res/",
+            "HTTP_STATUS\\":"src/HTTP_STATUS",
             "BaseReq\\":"src/BaseReq",
             "CookieHandler\\":"src/CookieHandler",
             "ReturnValue\\":"src/ReturnValue"   
